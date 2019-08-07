@@ -53,22 +53,61 @@ local nPreco := val(fwinputbox("qual o preço?"))
 local nQuantidade := val(fwinputbox("quantas unidades?"))
 local nTotal1 := nPreco * nQuantidade
 local nDesconto := 0
-local nTotal2 := nTotal1 - nDesconto
+local nTotal2 := 0
 
 do case
 
-    case (nQuantidade <= 5)
-    nDesconto == 0.02)
-    
-    case ((nQuantidade > 5) and (nQuantidade <= 10))
-    nDesconto == 0.03
-
+    case nQuantidade <= 5
+    nDesconto := 0.02
+    nTotal2 := nTotal1 * nDesconto
+    case nQuantidade > 5 .and. nQuantidade <= 10
+    nDesconto := 0.03
+    nTotal2 := nTotal1 * nDesconto
     otherwise 
-    nDesconto == 0.05
+    nDesconto := 0.05
+    nTotal2 := nTotal1 * nDesconto
+endcase
+
+
+alert(cProduto+" valor total: "+cvaltochar(nTotal1)+" desconto: "+cvaltochar(nDesconto)+" valor a pagar: "+cvaltochar(nTotal1-nTotal2))
+
+
+return
+
+
+user function exer6()
+
+local nNum1 := val(fwinputbox("qual o primeiro número?"))
+local nNum2 := val(fwinputbox("qual o segundo número?"))
+local nNum3 := val(fwinputbox("qual o terceiro número?"))
+
+do case
+
+    case nNum1 > nNum2 .and. nNum1 > nNum3
+        alert("o maior número é: "+cvaltochar(nNum1))
+    case nNum2 > nNum1 .and. nNum2 > nNum3    
+        alert("o maior número é: "+cvaltochar(nNum2))
+    case nNum3 > nNum1 .and. nNum3 > nNum2
+        alert("o maior número é: "+cvaltochar(nNum3))
+endcase
+
+
+return
+
+user function exer7()
+
+local nNum1 := val(fwinputbox("qual o primeiro número?"))
+local nNum2 := val(fwinputbox("qual o segundo número?"))
+local nNum3 := val(fwinputbox("qual o terceiro número?"))
+
+
+do case
+
+case nNum1 > nNum2 .and. nNum1 > nNum3
+
 
 endcase
 
-alert(cvaltochar(nTotal1)+" "+cvaltochar(nDesconto)+" "+cvaltochar(nTotal2))
 
 
 return
